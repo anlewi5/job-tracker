@@ -12,12 +12,8 @@ class CompaniesController < ApplicationController
   def create
     @company = Company.new(company_params)
 
-    if @company.save
-      flash[:success] = "#{@company.name} added!"
-      redirect_to company_path(@company)
-    else
-      render :new
-    end
+    flash[:success] = "#{@company.name} added!"
+    redirect_to company_path(@company)
   end
 
   def show
@@ -30,12 +26,8 @@ class CompaniesController < ApplicationController
   def update
     @company.update(company_params)
 
-    if @company.save
-      flash[:success] = "#{@company.name} updated!"
-      redirect_to company_path(@company)
-    else
-      render :edit
-    end
+    flash[:success] = "#{@company.name} updated!"
+    redirect_to company_path(@company)
   end
 
   def destroy
