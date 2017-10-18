@@ -1,4 +1,6 @@
 class CompaniesController < ApplicationController
+  before_action :set_company, only: [:show, :destroy, :edit, :update]
+
   def index
     @companies = Company.all
   end
@@ -8,40 +10,29 @@ class CompaniesController < ApplicationController
   end
 
   def create
-    @company = Company.new(company_params)
-    if @company.save
-      flash[:success] = "#{@company.name} added!"
-      redirect_to company_path(@company)
-    else
-      render :new
-    end
+    @company = Company.create!(company_params)
+
+    flash[:success] = "#{@company.name} added!"
+    redirect_to company_path(@company)
   end
 
   def show
-    company = Company.find(params[:id])
-    redirect_to company_jobs_path(company)
   end
 
   def edit
-    @company = Company.find(params[:id])
   end
 
   def update
-    @company = Company.find(params[:id])
     @company.update(company_params)
-    if @company.save
-      flash[:success] = "#{@company.name} updated!"
-      redirect_to company_path(@company)
-    else
-      render :edit
-    end
+
+    flash[:success] = "#{@company.name} updated!"
+    redirect_to company_path(@company)
   end
 
   def destroy
-    company = Company.find(params[:id])
-    company.destroy
+    @company.destroy
 
-    flash[:success] = "#{company.name} was successfully deleted!"
+    flash[:success] = "#{@company.name} was successfully deleted!"
     redirect_to companies_path
   end
 
@@ -49,6 +40,10 @@ class CompaniesController < ApplicationController
   private
 
   def company_params
-    params.require(:company).permit(:name, :city)
+    params.require(:company).permit(:name)
+  end
+
+  def set_company
+    @company = Company.find(params[:id])
   end
 end
