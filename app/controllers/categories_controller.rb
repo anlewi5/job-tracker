@@ -19,10 +19,10 @@ class CategoriesController < ApplicationController
 
   def show
   end
-  #
-  # def edit
-  # end
-  #
+
+  def edit
+  end
+  
   # def update
   #   @job = @company.jobs.find(params[:id])
   #   @job.update(job_params)
