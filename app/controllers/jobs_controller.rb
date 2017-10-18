@@ -7,11 +7,11 @@ class JobsController < ApplicationController
   end
 
   def new
-    @job = Job.new()
+    @job = Job.new
   end
 
   def create
-    @job = @company.jobs.new(job_params)
+    @job = @company.jobs.create!(job_params)
 
     flash[:success] = "You created #{@job.title} at #{@company.name}"
     redirect_to company_job_path(@company, @job)
