@@ -1,14 +1,21 @@
-<body>
-  <h3>All Companies</h3>
+<div class="index">
+  <h2>All Companies</h2>
 
-  <ul class="list-group">
+  <div class="container-fluid">
     <% @companies.each do |company| %>
-    <li class="list-group-item" class=company_<%= company.id %>>
-      <span class="badge">14</span>
-      <%= link_to company.name, company_path(company) %>
-      <%= button_to('Edit', edit_company_path(company), class: 'btn btn-large btn-primary') %>
-      <%= button_to('Delete', company_path(company), method: "delete", class: 'btn btn-large btn-primary') %>
-    </li>
+    <div class="panel panel-default" class=company_<%= company.id %>>
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <%= link_to company.name, company_path(company) %>
+          <span class="badge"><%= company.jobs.count %></span>
+        </h3>
+      </div>
+      <div class="panel-body">
+        <%= button_to('Details', company_path(company), class: 'btn btn-large btn-success') %>
+        <%= button_to('Edit', edit_company_path(company), class: 'btn btn-large btn-warning') %>
+        <%= button_to('Delete', company_path(company), method: "delete", class: 'btn btn-large btn-danger') %>
+      </div>
+    </div>
     <% end %>
-  </ul>
-</body>
+  </div>
+</div>

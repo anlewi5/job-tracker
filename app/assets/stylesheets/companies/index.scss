@@ -1,2 +1,29 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+h2{
+  color: white;
+  text-align: center;
+}
+
+.container-fluid {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.index {
+  background-image: url('/assets/company.jpg');
+  background-size: cover;
+}
+
+.panel-heading {
+  display: flex;
+  justify-content: center;
+}
+
+.panel-body {
+  display: flex;
+  justify-content: space-between;
+}
