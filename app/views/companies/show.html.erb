@@ -21,3 +21,9 @@
     <% end %>
   </div>
 </div>
+
+
+<h3>Comments</h3>
+<%= render partial: 'companies/contact', collection: @company.contacts %>
+
+<%= render partial: 'contacts/form' %>
