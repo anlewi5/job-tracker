@@ -1,12 +1,14 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-h2{
-  color: white;
+.title {
+  background-color: white;
+  padding: 5px 10px;
+  margin: 10px 0px;
   text-align: center;
 }
 
-.container-fluid {
+.company-container {
   width: 50%;
   display: flex;
   justify-content: center;
