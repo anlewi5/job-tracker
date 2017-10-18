@@ -15,7 +15,7 @@ gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use bootstrap as styling framework
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '3.3.7'
 gem 'autoprefixer-rails'
 gem 'jquery-rails'
 gem 'sprockets-rails'
