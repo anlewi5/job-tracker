@@ -11,10 +11,13 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = @job.comments.create!(comment_params)
+    @comment = Comment.new(comment_params)
+    @comment.job_id = params[:job_id]
+
+    @comment.save
 
     flash[:success] = "You said #{@comment.content} about #{@job.title}"
-    redirect_to job_comment_path(@job, @comment)
+    redirect_to job_path(@comment.job)
   end
 
   def show
