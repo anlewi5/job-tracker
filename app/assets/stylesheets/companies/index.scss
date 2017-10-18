@@ -1,8 +1,31 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-div {
-  background-color: Pink;
-  width: 50px;
-  height: 50px;
+.title {
+  background-color: white;
+  padding: 5px 10px;
+  margin: 10px 0px;
+  text-align: center;
+}
+
+.company-container {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.index {
+  background-image: url('/assets/company.jpg');
+  background-size: cover;
+}
+
+.panel-heading {
+  display: flex;
+  justify-content: center;
+}
+
+.panel-body {
+  display: flex;
+  justify-content: space-between;
 }
