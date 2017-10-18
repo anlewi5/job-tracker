@@ -25,8 +25,12 @@ class CompaniesController < ApplicationController
   def update
     @company.update(company_params)
 
-    flash[:success] = "#{@company.name} updated!"
-    redirect_to company_path(@company)
+    if @company.save
+      flash[:success] = "#{@company.name} updated!"
+      redirect_to company_path(@company)
+    else
+      render :edit
+    end
   end
 
   def destroy

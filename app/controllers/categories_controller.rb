@@ -23,14 +23,18 @@ class CategoriesController < ApplicationController
   def edit
   end
 
-  # def update
-  #   @job = @company.jobs.find(params[:id])
-  #   @job.update(job_params)
-  #
-  #   flash[:success] = "You updated #{@job.title} at #{@company.name}"
-  #   redirect_to company_job_path(@company, @job)
-  # end
-  #
+  def update
+    @job = @company.jobs.find(params[:id])
+    @job.update(job_params)
+
+    if @company.save
+      flash[:success] = "You updated #{@category.title}"
+      redirect_to category_jobs_path(@category)
+    else
+      render :edit
+    end
+  end
+
   # def destroy
   #   @job.destroy
   #
