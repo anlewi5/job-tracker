@@ -1,11 +1,19 @@
-<h3>All Companies</h3>
+<head>
+  <%= stylesheet_link_tag "stylesheets/companies/index.scss", media: "all" %>
+</head>
 
-<ul>
-  <% @companies.each do |company| %>
-  <li class=company_<%= company.id %>>
-    <%= link_to company.name, company_path(company) %>: 
-    <%= link_to "Edit", edit_company_path(company) %>
-    <%= link_to "Delete", company_path(company), method: "delete" %>
-  </li>
-  <% end %>
-</ul>
+<body>
+  <div>test</div>
+  <h3>All Companies</h3>
+
+  <ul class="list-group">
+    <% @companies.each do |company| %>
+    <li class="list-group-item" class=company_<%= company.id %>>
+      <span class="badge">14</span>
+      <%= link_to company.name, company_path(company) %>
+      <%= button_to('Edit', edit_company_path(company), class: 'btn btn-large btn-primary') %>
+      <%= button_to('Delete', company_path(company), method: "delete", class: 'btn btn-large btn-primary') %>
+    </li>
+    <% end %>
+  </ul>
+</body>
