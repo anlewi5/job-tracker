@@ -11,6 +11,7 @@ class CompaniesController < ApplicationController
 
   def create
     @company = Company.new(company_params)
+
     if @company.save
       flash[:success] = "#{@company.name} added!"
       redirect_to company_path(@company)
@@ -20,7 +21,7 @@ class CompaniesController < ApplicationController
   end
 
   def show
-    redirect_to company_jobs_path(company)
+    redirect_to company_jobs_path(@company)
   end
 
   def edit
@@ -28,6 +29,7 @@ class CompaniesController < ApplicationController
 
   def update
     @company.update(company_params)
+
     if @company.save
       flash[:success] = "#{@company.name} updated!"
       redirect_to company_path(@company)
