@@ -1,10 +1,5 @@
 class ContactsController < ApplicationController
-  before_action :set_contact, only: [:show, :destroy, :edit]
-  before_action :set_company, only: [:index, :new, :create, :edit, :update]
-
-  def index
-    @contacts = @company.contacts
-  end
+  before_action :set_company, only: [:new, :create]
 
   def new
     @contact = Comment.new
@@ -16,34 +11,8 @@ class ContactsController < ApplicationController
 
     @contact.save
 
-    flash[:success] = "You said #{@contact.content} about #{@company.title}"
+    flash[:success] = "You added #{@contact.first_name} #{@contact.last_name} to #{@company.name}"
     redirect_to company_path(@contact.company)
-  end
-
-  def show
-    @contact = @article.contacts.new
-  end
-
-  def edit
-  end
-
-  def update
-    @contact = @company.contacts.find(params[:id])
-    @contact.update(contact_params)
-
-    if @company.save
-      flash[:success] = "You said #{@contact.content} about #{@company.title}"
-      redirect_to company_contact_path(@company, @contact)
-    else
-      render :edit
-    end
-  end
-
-  def destroy
-    @contact.destroy
-
-    flash[:success] = "#{@contact.content} was successfully deleted!"
-    redirect_to companys_path
   end
 
   private
@@ -54,9 +23,5 @@ class ContactsController < ApplicationController
 
   def set_company
     @company = Job.find(params[:company_id])
-  end
-
-  def set_contact
-    @contact = Comment.find(params[:id])
   end
 end

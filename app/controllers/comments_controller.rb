@@ -1,6 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :destroy, :edit]
-  before_action :set_job, only: [:index, :new, :create, :edit, :update]
+  before_action :set_job, only: [:new, :create]
 
   def new
     @comment = Comment.new
@@ -24,9 +23,5 @@ class CommentsController < ApplicationController
 
   def set_job
     @job = Job.find(params[:job_id])
-  end
-
-  def set_comment
-    @comment = Comment.find(params[:id])
   end
 end
