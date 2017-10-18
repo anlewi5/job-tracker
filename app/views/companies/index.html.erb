@@ -13,9 +13,9 @@
         </h3>
       </div>
       <div class="panel-body">
-        <%= button_to('Details', company_path(company), class: 'btn btn-large btn-success') %>
-        <%= button_to('Edit', edit_company_path(company), class: 'btn btn-large btn-warning') %>
-        <%= button_to('Delete', company_path(company), method: "delete", class: 'btn btn-large btn-danger') %>
+        <%= button_to 'Details', company_path(company), method: "get", class: 'btn btn-large btn-success' %>
+        <%= button_to 'Edit', edit_company_path(company), method: "get", class: 'btn btn-large btn-warning' %>
+        <%= button_to 'Delete', company_path(company), method: "delete", class: 'btn btn-large btn-danger' %>
       </div>
     </div>
     <% end %>
