@@ -24,12 +24,12 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    @job = @company.jobs.find(params[:id])
-    @job.update(job_params)
+    @category = Category.find(params[:id])
+    @category.update(category_params)
 
-    if @company.save
+    if @category.save
       flash[:success] = "You updated #{@category.title}"
-      redirect_to category_jobs_path(@category)
+      redirect_to category_path(@category)
     else
       render :edit
     end
