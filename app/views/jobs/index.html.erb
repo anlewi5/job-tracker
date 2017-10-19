@@ -1,9 +1,9 @@
 <h2>
 All Jobs
 <% if @company %>
-  <strong> for<%= @company.name %></strong>
+  <strong> for <%= @company.name %></strong>
 <% elsif @category %>
-  <strong> for<%= @category.title %></strong>
+  <strong> for <%= @category.title %></strong>
 <% elsif params["sort"] == "interest" %>
   <strong>by Level of Interest</strong>
 <% elsif params["sort"] %>
