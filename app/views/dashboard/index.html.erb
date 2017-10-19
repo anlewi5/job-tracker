@@ -1,0 +1,21 @@
+<h2> JobTracker Dashboard </h2>
+
+<h3> Jobs Sorted by Interest </h3>
+
+<% @jobs.each do |key, value| %>
+  <br>
+  Interest Level: <%= key %>
+  <br>
+  Number of Jobs: <%= value %>
+  <br>
+<% end %>
+
+<h3> Top 3 Companies </h3>
+
+<% @companies[0..2].each do |company| %>
+  <br>
+  Company: <%= company[0] %>
+  <br>
+  Average Interest Level: <%= company[1] %>
+  <br>
+<% end %>
