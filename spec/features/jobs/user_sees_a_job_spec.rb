@@ -6,7 +6,7 @@ describe "User sees a specific job" do
     create(:category, id: 1)
     company.jobs.create!(title: "Developer", level_of_interest: 70, city: "Denver", category_id: 1)
 
-    visit company_job_path(company, job)
+    visit company_job_path(company, company.jobs.first)
 
     expect(page).to have_content("ESPN")
     expect(page).to have_content("Developer")
