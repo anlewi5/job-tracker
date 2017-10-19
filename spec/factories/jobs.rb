@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :job do
-    title "Job"
-    description "Desc"
-    city "Denver"
+    sequence(:title) { |n| "Job #{n}" }
+    sequence(:description) { |n| "Desc #{n}" }
+    sequence(:city) { |n| "City #{n}" }
     level_of_interest 5
     company
     category
