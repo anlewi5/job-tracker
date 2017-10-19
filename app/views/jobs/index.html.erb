@@ -4,6 +4,8 @@ All Jobs
   <strong> for<%= @company.name %></strong>
 <% elsif @category %>
   <strong> for<%= @category.title %></strong>
+<% elsif params["sort"] == "interest" %>
+  <strong>by Level of Interest</strong>
 <% elsif params["sort"] %>
   <strong>by City</strong>
 <% elsif params["location"] %>
@@ -19,6 +21,8 @@ All Jobs
   <%= job.title %> at <%= job.company.name %>
   <br>
   City: <%= job.city %>
+  <br>
+  Level of Interest: <%= job.level_of_interest %>
   <br>
   <%= link_to "Edit", edit_company_job_path(job.company.id, job.id) %>
   <%= link_to "Delete", company_job_path(job.company.id, job.id), method: "delete" %>

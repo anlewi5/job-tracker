@@ -10,6 +10,8 @@ class JobsController < ApplicationController
     elsif params[:category_id]
       @category = Category.find(params[:category_id])
       @jobs = Job.where(category: params[:category])
+    elsif params["sort"] == "interest"
+      @jobs = Job.order("level_of_interest desc")
     elsif params["sort"]
       @jobs = Job.order(:city)
     elsif params["location"]
