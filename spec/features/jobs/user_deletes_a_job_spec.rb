@@ -3,13 +3,11 @@ require 'rails_helper'
 describe "User deletes existing job" do
   scenario "a user can delete a job" do
     company = create(:company)
-    job = create(:job, company: company)
-    visit company_job_path(company, job)
+    create(:job, title: "work", company: company)
+    visit company_jobs_path(company)
 
-    within(".job_#{job.id}") do
-      click_link "Delete"
-    end
+    click_on "Delete"
 
-    expect(page).to have_content("#{job.title} was successfully deleted!")
+    expect(page).to have_content("work was successfully deleted!")
   end
 end
