@@ -2,11 +2,11 @@ class ContactsController < ApplicationController
   before_action :set_company, only: [:new, :create]
 
   def new
-    @contact = Comment.new
+    @contact = Contact.new
   end
 
   def create
-    @contact = Comment.new(contact_params)
+    @contact = Contact.new(contact_params)
     @contact.company_id = params[:company_id]
 
     @contact.save
@@ -18,10 +18,10 @@ class ContactsController < ApplicationController
   private
 
   def contact_params
-    params.require(:contact).permit(:content)
+    params.require(:contact).permit(:first_name, :last_name, :position, :email)
   end
 
   def set_company
-    @company = Job.find(params[:company_id])
+    @company = Company.find(params[:company_id])
   end
 end

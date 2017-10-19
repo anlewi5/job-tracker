@@ -17,6 +17,7 @@ class CompaniesController < ApplicationController
   end
 
   def show
+    @contact = Contact.new
   end
 
   def edit
