@@ -1,6 +1,5 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :destroy, :edit, :update]
-  # before_action :set_job, only: [:index, :new, :create, :edit, :update]
 
   def index
     @categories = Category.all
@@ -13,8 +12,12 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.create!(category_params)
 
-    flash[:success] = "You created #{@category.title}"
-    redirect_to category_path(@category)
+    if @category.save
+      flash[:success] = "You created #{@category.title}"
+      redirect_to category_path(@category)
+    else
+      render :new
+    end
   end
 
   def show
@@ -51,8 +54,4 @@ class CategoriesController < ApplicationController
   def set_category
     @category = Category.find(params[:id])
   end
-
-  # def set_job
-  #   @job = Job.find(params[:job_id])
-  # end
 end
