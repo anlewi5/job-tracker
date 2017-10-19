@@ -4,7 +4,7 @@ FactoryGirl.define do
     description "Desc"
     city "Denver"
     level_of_interest 5
-    category
     company
+    category
   end
 end

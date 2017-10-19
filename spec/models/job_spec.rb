@@ -4,7 +4,7 @@ describe Job do
   describe "validations" do
     context "invalid attributes" do
       it "is invalid without a title" do
-        job = Job.new(level_of_interest: 80, description: "Wahoo", city: "Denver")
+        job = create(:job, title: nil)
         expect(job).to be_invalid
       end
 
