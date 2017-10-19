@@ -10,6 +10,7 @@ describe "User creates a new job" do
     fill_in "job[level_of_interest]", with: 80
     fill_in "job[city]", with: "Denver"
 
+
     click_button "Create"
 
     expect(current_path).to eq("/companies/#{company.id}/jobs/#{Job.last.id}")
@@ -17,5 +18,6 @@ describe "User creates a new job" do
     expect(page).to have_content("Developer")
     expect(page).to have_content("80")
     expect(page).to have_content("Denver")
+    expect(page).to have_content("cat")
   end
 end
