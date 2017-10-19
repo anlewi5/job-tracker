@@ -1,10 +1,26 @@
-All Jobs for <strong><%= @company.name %></strong>
+<h2>
+All Jobs
+<% if @company %>
+  <strong> for<%= @company.name %></strong>
+<% elsif @category %>
+  <strong> for<%= @category.title %></strong>
+<% elsif params["sort"] %>
+  <strong>by City</strong>
+<% elsif params["location"] %>
+  <strong>in <%= params["location"] %></strong>
+<% end %>
+</h2>
+
+<h3> Total: <%= @jobs.count %> </h3>
 
 <ul>
   <% @jobs.each do |job| %>
   <li class=job_<%= job.id %>>
   <%= job.title %> at <%= job.company.name %>
-  <%= link_to "Edit", edit_company_job_path(params[:company_id], job.id) %>
-  <%= link_to "Delete", company_job_path(params[:company_id], job.id), method: "delete" %>
+  <br>
+  City: <%= job.city %>
+  <br>
+  <%= link_to "Edit", edit_company_job_path(job.company.id, job.id) %>
+  <%= link_to "Delete", company_job_path(job.company.id, job.id), method: "delete" %>
   <% end %>
 </ul>

@@ -1,9 +1,22 @@
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :destroy, :edit]
-  before_action :set_company, only: [:index, :new, :create, :edit, :update]
+  before_action :set_company, only: [:new, :create, :edit, :update]
 
   def index
-    @jobs = @company.jobs
+    # binding.pry
+    if params[:company_id]
+      @company = Company.find(params[:company_id])
+      @jobs = @company.jobs
+    elsif params[:category_id]
+      @category = Category.find(params[:category_id])
+      @jobs = Job.where(category: params[:category])
+    elsif params["sort"]
+      @jobs = Job.order(:city)
+    elsif params["location"]
+      @jobs = Job.where(city: params["location"])
+    else
+      @jobs = Job.all
+    end
   end
 
   def new
