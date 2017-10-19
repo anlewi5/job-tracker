@@ -34,4 +34,24 @@ describe Company do
       expect(company).to respond_to(:contacts)
     end
   end
+
+  describe "class_methods" do
+    describe ".average_interest_for_company" do
+      it "returns an array of arrays with [company_name, avg_interest_level] in desc order" do
+        company1 = create(:company, name: "one")
+        company2 = create(:company, name: "two")
+        company3 = create(:company, name: "three")
+
+        category = create(:category)
+
+        company1.jobs.create!(title: "Job", description: "Desc", level_of_interest: 1, city: "Den", category: category)
+        company2.jobs.create!(title: "Job", description: "Desc", level_of_interest: 2, city: "Den", category: category)
+        company2.jobs.create!(title: "Job", description: "Desc", level_of_interest: 4, city: "Den", category: category)
+        company3.jobs.create!(title: "Job", description: "Desc", level_of_interest: 6, city: "Den", category: category)
+
+        company_interest = [["three", 6], ["two", 3], ["one", 1]]
+        expect(Company.average_interest_for_company).to eq(company_interest)
+      end
+    end
+  end
 end
