@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Comment, type: :model do
+describe Comment, type: :model do
   describe "validations" do
     context "invalid attributes" do
       it "is invalid without content" do
